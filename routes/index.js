@@ -11,7 +11,6 @@ const pool = new Pool({
   database: 'postgres'
 });
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
@@ -42,7 +41,6 @@ router.get('/data', async (req, res) => {
   try {
     const response = await pool.query('SELECT * FROM posts')
     res.json( { success: true, response: response.rows })
-    // console.log(response.rows[0])
   } catch(err) {
     res.json( { success: false, message: err.stack })
   }
